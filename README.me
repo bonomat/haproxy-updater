@@ -1,0 +1,13 @@
+how to use:
+
+* build
+sudo docker build -t bonomat/ha-updater . 
+
+* run
+sudo docker run  --name ha -d -p 3000:3000 bonomat/ha-updater
+
+post file via curl:
+curl -i -F file=@Localfile localhost:3000/api/files
+
+or visit 
+localhost:3000/
