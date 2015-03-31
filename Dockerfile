@@ -1,19 +1,17 @@
-FROM ubuntu:14.04
+
+FROM    centos:centos6
+
 MAINTAINER Philipp Hoenisch philipp@hoenisch.at
 
-RUN apt-get update
-RUN apt-get install -y wget python python-pip python-dev libssl-dev libffi-dev bash
+# Enable EPEL for Node.js
+RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+# Install Node.js and npm
+RUN     yum install -y npm
 
-RUN mkdir /app
-WORKDIR /app
+# Bundle app source
+COPY . /src
+# Install app dependencies
+RUN cd /src; npm install
 
-RUN wget https://github.com/jwilder/docker-gen/releases/download/0.3.3/docker-gen-linux-amd64-0.3.3.tar.gz
-RUN tar xvzf docker-gen-linux-amd64-0.3.3.tar.gz -C /usr/local/bin
-
-RUN pip install python-etcd
-
-ADD . /app
-
-ENV DOCKER_HOST unix:///var/run/docker.sock
-
-CMD docker-gen -interval 10 -watch -notify "python /tmp/register.py" etcd.tmpl /tmp/register.py
+EXPOSE  3000
+CMD ["node", "/src/index.js"]
