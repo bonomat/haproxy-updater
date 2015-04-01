@@ -1,6 +1,7 @@
 var express = require('express');
 var multer = require('multer');
 var fs = require("fs");
+var exec = require('child_process').exec;
 
 var app = express();
 var completed = false;
@@ -71,7 +72,6 @@ app.get('/', function (req, res) {
 
 app.post('/api/files', function (req, res) {
 	if (completed === true) {
-		console.log(req.files);
 		res.end('File uploaded. Step back to upload more.');
 	}
 });
