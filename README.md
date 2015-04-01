@@ -1,6 +1,6 @@
 This Docker Container contains HAProxy and a simple nodeJS service to update its configuration
 
-THIS IS NOT SECURE, USE ON OWN RISK
+THIS IS NOT SECURE, USE AT OWN RISK
 
 how to use:
 
