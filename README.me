@@ -5,10 +5,10 @@ THIS IS NOT SECURE, USE ON OWN RISK
 how to use:
 
 build:
-sudo docker build -t bonomat/ha-updater . 
+docker build -t bonomat/haproxy-updater . 
 
 run:
-sudo docker run  --name ha -p 3001:3000 -p 1936:1936 -p 8082:8081 -d bonomat/ha-updater
+docker run  --name ha -p 3001:3000 -p 1936:1936 -p 8082:8081 -d bonomat/haproxy-updater
 
 post new haproxy file via curl:
 curl -i -F file=@Localfile.cfg localhost:3000/api/files
