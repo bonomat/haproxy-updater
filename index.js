@@ -20,9 +20,9 @@ app.use(multer({ dest: './uploads',
 		completed = true;
 		copyFile(file.path, '/etc/haproxy/haproxy.cfg', function(err) {
          if(err) {
-            console.log(err);            
+            console.log('copy error: ' + err);            
          } else {
-            console.log('haproxy updated');
+            console.log('\nhaproxy updated\n');
             exec('service haproxy restart', function (error, stdout, stderr) {
                 console.log('stdout: ' + stdout);
                 console.log('stderr: ' + stderr);
