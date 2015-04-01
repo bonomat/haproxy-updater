@@ -1,5 +1,5 @@
 
-FROM    haproxy
+FROM    haproxy:1.5
 
 MAINTAINER Philipp Hoenisch philipp@hoenisch.at
 
