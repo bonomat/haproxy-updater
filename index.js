@@ -27,6 +27,7 @@ app.use(multer({ dest: './uploads',
             exec('service haproxy restart', function (error, stdout, stderr) {
                 console.log('stdout: ' + stdout);
                 console.log('stderr: ' + stderr);
+                console.log('error: ' + error);
                 if (error !== null) {
                   console.log('exec error: ' + error);
                 } else { 
